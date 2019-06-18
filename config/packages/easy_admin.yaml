@@ -1,0 +1,31 @@
+easy_admin:
+   entities:
+#        # List the entity class name you want to manage
+       User:
+            class: App\Entity\User
+            new:
+                fields: ['email']
+            edit:
+                fields: ['id']
+            list:
+                fields: ['id']
+       Author:
+            class: App\Entity\Author
+            form:
+                fields:
+                    - name
+                    - role
+                    - location
+                    - { property: 'avatarFile', type: 'vich_image', type_options: { required: false } }
+                    - { property: 'posts', type: 'easyadmin_autocomplete', type_options: { required: false } }
+                    #- createdAt
+       Post:
+            class: App\Entity\Post
+            form:
+                fields:
+                    - title
+                    - tags
+                    - author
+                    - body
+                    #- tags
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: false } }
